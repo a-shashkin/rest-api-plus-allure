@@ -1,1 +1,1 @@
-# rest-api-plus-allure
+Repository contains API tests integrated with Allure.
