@@ -49,3 +49,15 @@ tasks.withType(Test) {
         }
     }
 }
+
+task reqres_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags "reqres_tests"
+    }
+}
+
+task demowebshop_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags "demowebshop_tests"
+    }
+}
