@@ -1,3 +1,6 @@
+package com.simbirsoft.tests;
+
+import com.simbirsoft.filters.CustomLogFilter;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -16,6 +19,7 @@ public class DemowebshopTest {
     void addToEmptyCartTest() {
         Response response =
         given().
+                filter(CustomLogFilter.customLogFilter().withCustomTemplates()).
                 log().all().
                 contentType("application/x-www-form-urlencoded; charset=UTF-8").
                 header("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" +
@@ -41,6 +45,7 @@ public class DemowebshopTest {
     @Tag("demowebshop_tests")
     void unregisteredUserVote() {
         given().
+                filter(CustomLogFilter.customLogFilter().withCustomTemplates()).
                 log().all().
                 contentType("application/x-www-form-urlencoded; charset=UTF-8").
                 header("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" +
@@ -58,6 +63,7 @@ public class DemowebshopTest {
     @Tag("demowebshop_tests")
     void removeFromCartTest() {
         given().
+                filter(CustomLogFilter.customLogFilter().withCustomTemplates()).
                 log().all().
                 contentType("multipart/form-data; boundary=----WebKitFormBoundaryufsLp4KPpbjV0c4E").
                 header("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" +

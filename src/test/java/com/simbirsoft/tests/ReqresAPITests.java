@@ -1,3 +1,6 @@
+package com.simbirsoft.tests;
+
+import com.simbirsoft.filters.CustomLogFilter;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Tag;
@@ -17,6 +20,7 @@ public class ReqresAPITests {
     void getListUsersTest() {
         Integer response =
             given().
+                    filter(CustomLogFilter.customLogFilter().withCustomTemplates()).
                     log().all().
                     get("https://reqres.in/api/users?page=2").
             then().
@@ -31,6 +35,7 @@ public class ReqresAPITests {
     void getSingleUserTest() {
         Response response =
                 given().
+                        filter(CustomLogFilter.customLogFilter().withCustomTemplates()).
                         log().all().
                         get("https://reqres.in/api/users/2").
                 then().
@@ -51,6 +56,7 @@ public class ReqresAPITests {
     void getResourceList() {
         Response response =
                 given().
+                        filter(CustomLogFilter.customLogFilter().withCustomTemplates()).
                         log().all().
                         get("https://reqres.in/api/unknown").
                 then().
@@ -77,6 +83,7 @@ public class ReqresAPITests {
 
         Response response =
         given().
+                filter(CustomLogFilter.customLogFilter().withCustomTemplates()).
                 log().all().
                 header("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
                         "(KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36").
@@ -105,6 +112,7 @@ public class ReqresAPITests {
 
         Response response =
         given().
+                filter(CustomLogFilter.customLogFilter().withCustomTemplates()).
                 log().all().
                 header("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
                            "(KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36").
