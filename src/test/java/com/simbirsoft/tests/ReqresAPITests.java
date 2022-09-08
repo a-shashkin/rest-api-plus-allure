@@ -1,8 +1,13 @@
 package com.simbirsoft.tests;
 
 import com.simbirsoft.filters.CustomLogFilter;
+import io.qameta.allure.AllureId;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -13,10 +18,15 @@ import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Feature("Reqres")
+@Owner("Alexander Shashkin")
 public class ReqresAPITests {
 
     @Test
     @Tag("reqres_tests")
+    @Story("GET-запросы")
+    @DisplayName("Проверка возврата общего числа пользователей")
+    @AllureId("12147")
     void getListUsersTest() {
         Integer response =
             given().
@@ -32,6 +42,9 @@ public class ReqresAPITests {
 
     @Test
     @Tag("reqres_tests")
+    @Story("GET-запросы")
+    @DisplayName("Проверка возврата данных пользователя Janet Weaver")
+    @AllureId("12148")
     void getSingleUserTest() {
         Response response =
                 given().
@@ -53,6 +66,9 @@ public class ReqresAPITests {
 
     @Test
     @Tag("reqres_tests")
+    @Story("GET-запросы")
+    @DisplayName("Проверка возврата данных списка ресурсов")
+    @AllureId("12149")
     void getResourceList() {
         Response response =
                 given().
@@ -76,6 +92,9 @@ public class ReqresAPITests {
 
     @Test
     @Tag("reqres_tests")
+    @Story("POST-запросы")
+    @DisplayName("Проверка выполнения запроса регистрации пользователя")
+    @AllureId("12150")
     void registerUserTest() {
         Map<String, String> jsonBody = new HashMap<>();
         jsonBody.put("email", "eve.holt@reqres.in");
@@ -105,6 +124,9 @@ public class ReqresAPITests {
 
     @Test
     @Tag("reqres_tests")
+    @Story("POST-запросы")
+    @DisplayName("Проверка выполнения запроса авторизации пользователя")
+    @AllureId("12151")
     void loginUserTest() {
         Map<String, String> jsonBody = new HashMap<>();
         jsonBody.put("email", "eve.holt@reqres.in");

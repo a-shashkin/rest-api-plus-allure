@@ -1,9 +1,14 @@
 package com.simbirsoft.tests;
 
 import com.simbirsoft.filters.CustomLogFilter;
+import io.qameta.allure.AllureId;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -12,10 +17,15 @@ import static io.restassured.config.EncoderConfig.encoderConfig;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Feature("Demowebshop")
+@Owner("Alexander Shashkin")
 public class DemowebshopTest {
 
     @Test
     @Tag("demowebshop_tests")
+    @Story("Корзина товаров")
+    @DisplayName("Проверка добавления товара в корзину")
+    @AllureId("12152")
     void addToEmptyCartTest() {
         Response response =
         given().
@@ -43,6 +53,9 @@ public class DemowebshopTest {
 
     @Test
     @Tag("demowebshop_tests")
+    @Story("Голосование")
+    @DisplayName("Проверка невозможности голосования без регистрации")
+    @AllureId("12156")
     void unregisteredUserVote() {
         given().
                 filter(CustomLogFilter.customLogFilter().withCustomTemplates()).
@@ -61,6 +74,9 @@ public class DemowebshopTest {
 
     @Test
     @Tag("demowebshop_tests")
+    @Story("Корзина товаров")
+    @DisplayName("Проверка удаления товара из корзины")
+    @AllureId("12155")
     void removeFromCartTest() {
         given().
                 filter(CustomLogFilter.customLogFilter().withCustomTemplates()).
